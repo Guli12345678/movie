@@ -10,7 +10,6 @@ interface Props {
 export const MovieCard: FC<Props> = memo((props) => {
   const { movie } = props;
   const navigate = useNavigate();
-  console.log(movie);
 
   return (
     <div>

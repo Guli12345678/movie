@@ -49,7 +49,7 @@ export const Header = memo(() => {
         </ul>
 
         <div>
-          <button className="w-[180px] h-[56px] rounded-[12px] bg-[#C61F1F]">
+          <button className="w-[180px] h-[56px] rounded-[12px] text-white bg-[#C61F1F]">
             Войти
           </button>
         </div>

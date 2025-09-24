@@ -1,1 +1,2 @@
-export { MovieDetail as default } from "./ui/MovieDetail";
+
+export {MovieDetail as default} from "./ui/MovieDetail"

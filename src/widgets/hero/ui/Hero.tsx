@@ -1,11 +1,14 @@
 import { memo, useState, type FC } from "react";
-import type { IMovie } from "../../../entities/movie";
+import { useMovie, type IMovie } from "../../../entities/movie";
 interface Props {
   movies: IMovie[];
 }
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { createImageUrl } from "../../../shared/utils";
+import { Navigation, Pagination } from "swiper/modules";
 
 export const Hero: FC<Props> = memo(({ movies }) => {
   const [current, setCurrent] = useState(0);
@@ -15,6 +18,9 @@ export const Hero: FC<Props> = memo(({ movies }) => {
       <Swiper
         spaceBetween={20}
         slidesPerView={1}
+        navigation={true}
+        modules={[Navigation, Pagination]}
+        className="mySwiper"
         pagination={{ clickable: true }}
         loop
         autoplay={{ delay: 3000 }}
@@ -24,17 +30,28 @@ export const Hero: FC<Props> = memo(({ movies }) => {
           <SwiperSlide key={item.id}>
             <img
               src={createImageUrl(item.backdrop_path)}
-              className="w-full h-[400px] object-cover rounded-xl"
+              className="w-full h-[640px] object-cover rounded-xl"
             />
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="text-center mt-4 text-xl font-semibold text-gray-700">
-        <img
-          className="w-[200px] h-[100px] object-cover"
-          src={createImageUrl(movies?.[current]?.backdrop_path)}
-          alt=""
-        />
+      <div className="flex gap-4 overflow-x-auto mt-10">
+        {movies?.map((item, index) => (
+          <div
+            key={item.id}
+            className={`relative rounded-lg  border ${
+              current === index ? "border-red-500" : ""
+            }`}
+          >
+            <img
+              src={createImageUrl(item.backdrop_path)}
+              className={`w-[200px] h-[100px] rounded-lg min-w-[200px] object-cover ${
+                current === index ? "blur-[2px]" : ""
+              }`}
+              alt={item.title}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

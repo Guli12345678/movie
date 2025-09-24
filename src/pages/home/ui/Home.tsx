@@ -8,11 +8,10 @@ export const Home = memo(() => {
   const { data } = getMovies();
   console.log("First movie:", data?.results?.[0]);
 
-
   return (
     <div className="bg-black">
-      <Hero movies={data?.results} />
-      <MovieList movies={data?.results} />
+      <Hero movies={data?.results.slice(0, 6)} />
+      <MovieList movies={data?.results.slice(0, 4)} />
     </div>
   );
 });
