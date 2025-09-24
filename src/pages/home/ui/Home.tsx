@@ -6,7 +6,6 @@ import Hero from "../../../widgets/hero";
 export const Home = memo(() => {
   const { getMovies } = useMovie();
   const { data } = getMovies();
-  console.log("First movie:", data?.results?.[0]);
 
   return (
     <div className="bg-black">

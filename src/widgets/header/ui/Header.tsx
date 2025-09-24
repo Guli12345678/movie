@@ -7,7 +7,7 @@ import vector2 from "@/shared/assets/tablet-line.svg";
 import label from "@/shared/assets/label.png";
 export const Header = memo(() => {
   return (
-    <header className="shadow-lg shadow-slate-500 bg-[black] text-[#A1A1A1]">
+    <header className=" bg-[black] text-[#A1A1A1]">
       <div className="container flex justify-between  items-center ">
         <Link to={"/"}>
           <img src={logo} alt="" />

@@ -20,7 +20,7 @@ export const fetchMovieById = async (id: string) => {
 };
 export const fetchReviewOfMovie = async (id: string) => {
   const response = await api.get(`/movie/${id}/reviews`);
-  return response.data; // no need to wrap in { datas: ... }
+  return response.data;
 };
 
 
