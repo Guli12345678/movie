@@ -1,5 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchMovies, fetchMovieById, fetchMovieInfo, fetchReviewOfMovie } from "../api/fetchApi";
+import {
+  fetchMovies,
+  fetchMovieById,
+  fetchMovieInfo,
+  fetchReviewOfMovie,
+  fetchMovieFromTitle,
+} from "../api/fetchApi";
 import type { IMovieParams } from "./types";
 
 export const useMovie = () => {
@@ -23,7 +29,13 @@ export const useMovie = () => {
   useQuery({
     queryKey: ["movieReview", id],
     queryFn: () => fetchReviewOfMovie(id),
-    enabled: !!id, // prevents query from running if id is undefined
+    enabled: !!id, 
+  });
+ const useMovieTtitle = (title: string) =>
+  useQuery({
+    queryKey: ["movieReview", title],
+    queryFn: () => fetchMovieFromTitle(title),
+    enabled: !!title,
   });
 
 
@@ -33,5 +45,11 @@ export const useMovie = () => {
       queryFn: () => fetchMovieInfo(id, path),
     });
 
-  return { getMovies, getMovieById, getMovieInfo, useReviewOfMovie };
+  return {
+    getMovies,
+    getMovieById,
+    getMovieInfo,
+    useReviewOfMovie,
+    useMovieTtitle,
+  };
 };

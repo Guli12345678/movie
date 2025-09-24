@@ -22,6 +22,10 @@ export const fetchReviewOfMovie = async (id: string) => {
   const response = await api.get(`/movie/${id}/reviews`);
   return response.data;
 };
+export const fetchMovieFromTitle = async (title: string) => {
+  const response = await api.get(`search/tv?query=${title}`);
+  return response.data;
+};
 
 
 export const fetchMovieInfo = async (id: string, path: string) => {
