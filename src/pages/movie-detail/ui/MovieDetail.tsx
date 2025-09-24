@@ -9,8 +9,8 @@ export const MovieDetail = memo(() => {
   const { data: similarMovies } = getMovieInfo(id as string, "similar");
   const { data: reviewData, isLoading, error } = useReviewOfMovie(id!);
 
-  if (isLoading) return <div>Loading reviews...</div>;
-  if (error) return <div>Failed to load reviews</div>;
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Failed</div>;
 
   return (
     <div>

@@ -23,12 +23,16 @@ export const fetchReviewOfMovie = async (id: string) => {
   return response.data;
 };
 export const fetchMovieFromTitle = async (title: string) => {
-  const response = await api.get(`search/tv?query=${title}`);
+  const response = await api.get(`search/movie?query=${title}`);
   return response.data;
 };
 
-
 export const fetchMovieInfo = async (id: string, path: string) => {
-  const response = await api.get(`/movie/${id}/${path}`);
-  return response.data;
+  try {
+    const response = await api.get(`/movie/${id}/${path}`);
+    return response.data;
+  } catch (error) {
+    const response = await api.get(`/movie/${id}/${path}`);
+    return response.data;
+  }
 };

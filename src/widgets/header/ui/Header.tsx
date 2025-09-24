@@ -27,7 +27,7 @@ export const Header = memo(() => {
             </Link>
           </li>
           <li className="mt-1">
-            <Link to={"/search"}>
+            <Link to={"/"}>
               <img
                 className="flex justify-self-center h-[20px]"
                 src={label}
