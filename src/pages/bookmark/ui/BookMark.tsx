@@ -1,4 +1,3 @@
-import React from "react";
 
 export const BookMark = () => {
   return <div className="container">BookMark page</div>;

@@ -1,5 +1,5 @@
 import { memo, useState, type FC } from "react";
-import { useMovie, type IMovie } from "../../../entities/movie";
+import { type IMovie } from "../../../entities/movie";
 interface Props {
   movies: IMovie[];
 }
