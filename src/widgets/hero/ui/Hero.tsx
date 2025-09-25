@@ -13,18 +13,21 @@ import { Navigation, Pagination } from "swiper/modules";
 export const Hero: FC<Props> = memo(({ movies }) => {
   const [current, setCurrent] = useState(0);
 
+  const [swiper, setSwiper] = useState<any>(null);
+
   return (
     <div className="container mt-10">
       <Swiper
         spaceBetween={20}
         slidesPerView={1}
+        onSwiper={(i) => setSwiper(i)}
+        onSlideChange={(swiper) => setCurrent(swiper.realIndex)}
         navigation={true}
         modules={[Navigation, Pagination]}
         className="mySwiper"
         pagination={{ clickable: true }}
         loop
         autoplay={{ delay: 3000 }}
-        onSlideChange={(swiper) => setCurrent(swiper.realIndex)}
       >
         {movies?.map((item: IMovie) => (
           <SwiperSlide key={item.id}>
@@ -44,6 +47,7 @@ export const Hero: FC<Props> = memo(({ movies }) => {
             }`}
           >
             <img
+              onClick={() => swiper?.slideTo(index)}
               src={createImageUrl(item.backdrop_path)}
               className={`w-[200px] h-[100px] rounded-lg min-w-[200px] object-cover ${
                 current === index ? "blur-[2px]" : ""

@@ -17,5 +17,6 @@ export interface IMovie {
 export interface IMovieParams {
   page: string;
   sort_by?: string;
+  "release_date.lte": string;
+  with_genres: string ;
 }
-
