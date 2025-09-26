@@ -16,9 +16,9 @@ export const MovieCard: FC<Props> = memo((props) => {
   return (
     <div>
       <div onClick={() => navigate(`/movie/${movie.id}`)}>
-        <div className="relative">
+        <div className="relative ">
           <img
-            className="h-[435px] object-cover"
+            className="md:h-[435px] h-[235px] w-full rounded-lg object-cover"
             src={
               movie.poster_path
                 ? createImageUrl(movie.poster_path)
@@ -27,7 +27,7 @@ export const MovieCard: FC<Props> = memo((props) => {
             alt=""
           />
           {release_year && (
-            <span className="bg-red-500 text-white text-sm absolute bottom-4 ml-5 px-2 rounded">
+            <span className="bg-red-500 text-white text-sm absolute top-0 mt-3 ml-5 px-2 rounded">
               {release_year < current_year ? (
                 release_year
               ) : (

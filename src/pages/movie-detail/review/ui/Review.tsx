@@ -1,21 +1,14 @@
-import { memo, Suspense, useState, type FC } from "react";
-import { type IMovie } from "../../../entities/movie";
-interface Props {
-  movies: IMovie[];
-}
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { createImageUrl } from "../../../shared/utils";
-import { Navigation, Pagination } from "swiper/modules";
+import { memo, Suspense, useState } from "react";
+import { useMovie } from "../../../../entities/movie";
+import { useParams } from "react-router-dom";
 
-export const Hero: FC<Props> = memo(({ movies }) => {
-  const [current, setCurrent] = useState(0);
+export const Review = memo(() => {
+  const { id } = useParams();
 
-  const [swiper, setSwiper] = useState<any>(null);
+  const { useReviewOfMovie } = useMovie();
+  const { data: reviews, error } = useReviewOfMovie(id!);
 
-  if (!movies)
+  if (!reviews)
     return (
       <Suspense>
         <div className="min-h-screen w-full flex items-center justify-center">
@@ -75,49 +68,22 @@ export const Hero: FC<Props> = memo(({ movies }) => {
         </div>
       </Suspense>
     );
-
+  if (error) return <div>Failed</div>;
   return (
-    <div className="container mt-10">
-      <Swiper
-        spaceBetween={20}
-        slidesPerView={1}
-        onSwiper={(i) => setSwiper(i)}
-        onSlideChange={(swiper) => setCurrent(swiper.realIndex)}
-        navigation={true}
-        modules={[Navigation, Pagination]}
-        className="mySwiper"
-        pagination={{ clickable: true }}
-        loop
-        autoplay={{ delay: 3000 }}
-      >
-        {movies?.map((item: IMovie) => (
-          <SwiperSlide key={item.id}>
-            <img
-              src={createImageUrl(item.backdrop_path)}
-              className="w-full h-[640px] object-cover rounded-xl"
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <div className="flex gap-4 overflow-x-auto mt-10">
-        {movies?.map((item, index) => (
+    <div>
+      <section className="container mt-10 text-left">
+        <h2 className="text-2xl font-bold mb-4">Reviews</h2>
+        {reviews?.results?.length === 0 && <p>No reviews available.</p>}
+        {reviews?.results?.map((review: any) => (
           <div
-            key={item.id}
-            className={`relative rounded-lg  border ${
-              current === index ? "border-red-500" : ""
-            }`}
+            key={review.id}
+            className="mb-6 p-4 shadow-lg shadow-slate-800 rounded-xl"
           >
-            <img
-              onClick={() => swiper?.slideTo(index)}
-              src={createImageUrl(item.backdrop_path)}
-              className={`w-[200px] h-[100px] rounded-lg min-w-[200px] object-cover ${
-                current === index ? "blur-[2px]" : ""
-              }`}
-              alt={item.title}
-            />
+            <h4 className="font-bold text-[#C61F1F]">{review.author}</h4>
+            <p className="mt-2 text-gray-300 line-clamp-4">{review.content}</p>
           </div>
         ))}
-      </div>
+      </section>
     </div>
   );
 });

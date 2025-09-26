@@ -7,13 +7,14 @@ interface Props {
 
 export const MovieList: FC<Props> = memo((props) => {
   const { movies } = props;
-  console.log(movies);
 
   return (
     <div className="container mt-10 grid lg:grid-cols-4 gap-3 md:grid-cols-3 grid-cols-2">
       {movies?.map((item: IMovie) => (
         <MovieCard key={item.id} movie={item} />
       ))}
+      <br />
+      <br />
     </div>
   );
 });

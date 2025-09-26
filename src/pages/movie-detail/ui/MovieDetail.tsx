@@ -5,17 +5,16 @@ import { useParams } from "react-router-dom";
 
 export const MovieDetail = memo(() => {
   const { id } = useParams();
-  const { getMovieInfo, useReviewOfMovie } = useMovie();
+  const { getMovieInfo } = useMovie();
   const { data: similarMovies } = getMovieInfo(id as string, "similar");
-  const { data: reviewData, isLoading, error } = useReviewOfMovie(id!);
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Failed</div>;
 
   return (
     <div>
-      <MovieInfo id={id as string} reviews={reviewData?.results} />
+      <MovieInfo id={id as string} />
+      <br />
+      <br />
       <MovieList movies={similarMovies?.results?.slice(0, 4)} />
+      <br />
     </div>
   );
 });

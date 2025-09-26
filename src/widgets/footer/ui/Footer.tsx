@@ -6,13 +6,15 @@ import { About } from "./About";
 
 export const Footer = memo(() => {
   return (
-    <footer className="bg-[#111111] mt-20 w-full border-8 ">
-      <div className="container text-[#A1A1A1] flex justify-between p-10">
-        <DownLoad />
-        <About />
-        <Categories />
-        <Contact />
-      </div>
-    </footer>
+    <div className=" bg-[#111111] w-full mx-auto flex justify-center  items-center gap-100 text-[#A1A1A1]">
+      <footer className="">
+        <div className="container mt-10 grid lg:grid-cols-4 md:grid-cols-3 gap-14 grid-cols-1 mb-10 md:gap-40 p-10">
+          <DownLoad />
+          <About />
+          <Categories />
+          <Contact />
+        </div>
+      </footer>
+    </div>
   );
 });

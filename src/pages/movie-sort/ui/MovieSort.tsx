@@ -19,7 +19,7 @@ export const MovieSort = memo(() => {
   };
 
   return (
-    <div className="container mx-auto flex w-[200px] gap-10">
+    <div className="container mx-auto grid place-items-center md:grid-cols-3 md:place-items-baseline w-[200px] gap-10">
       <div>
         <Select
           className="w-60"
@@ -54,7 +54,7 @@ export const MovieSort = memo(() => {
         <Select
           className="w-60"
           placeholder="Genre"
-          value={searchParams.get("release_date.lte") ?? undefined}
+          value={searchParams.get("with_genres") ?? undefined}
           options={[
             { value: "28", label: "Action" },
             { value: "12", label: "Adventure" },

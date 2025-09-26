@@ -1,21 +1,17 @@
-import { memo, Suspense, useState, type FC } from "react";
-import { type IMovie } from "../../../entities/movie";
-interface Props {
-  movies: IMovie[];
-}
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { createImageUrl } from "../../../shared/utils";
-import { Navigation, Pagination } from "swiper/modules";
+import { memo, Suspense } from "react";
+import { useCrew } from "../model/useCrew";
+import { useParams } from "react-router-dom";
+import { createImageUrl } from "@/shared/utils";
+import { FaBirthdayCake } from "react-icons/fa";
 
-export const Hero: FC<Props> = memo(({ movies }) => {
-  const [current, setCurrent] = useState(0);
+export const CrewView = memo(() => {
+  const { id } = useParams();
+  const { getCrewById } = useCrew();
+  const { data } = getCrewById(id as string);
 
-  const [swiper, setSwiper] = useState<any>(null);
+  console.log(data);
 
-  if (!movies)
+  if (!data)
     return (
       <Suspense>
         <div className="min-h-screen w-full flex items-center justify-center">
@@ -77,47 +73,40 @@ export const Hero: FC<Props> = memo(({ movies }) => {
     );
 
   return (
-    <div className="container mt-10">
-      <Swiper
-        spaceBetween={20}
-        slidesPerView={1}
-        onSwiper={(i) => setSwiper(i)}
-        onSlideChange={(swiper) => setCurrent(swiper.realIndex)}
-        navigation={true}
-        modules={[Navigation, Pagination]}
-        className="mySwiper"
-        pagination={{ clickable: true }}
-        loop
-        autoplay={{ delay: 3000 }}
-      >
-        {movies?.map((item: IMovie) => (
-          <SwiperSlide key={item.id}>
+    <div className="container">
+      <section className="">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-100 grid-cols-1">
+          <div className="rounded-2xl">
             <img
-              src={createImageUrl(item.backdrop_path)}
-              className="w-full h-[640px] object-cover rounded-xl"
+              className="md:rounded-2xl w-full md:object-cover"
+              src={createImageUrl(data?.profile_path)}
+              width={300}
+              alt=""
             />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <div className="flex gap-4 overflow-x-auto mt-10">
-        {movies?.map((item, index) => (
-          <div
-            key={item.id}
-            className={`relative rounded-lg  border ${
-              current === index ? "border-red-500" : ""
-            }`}
-          >
-            <img
-              onClick={() => swiper?.slideTo(index)}
-              src={createImageUrl(item.backdrop_path)}
-              className={`w-[200px] h-[100px] rounded-lg min-w-[200px] object-cover ${
-                current === index ? "blur-[2px]" : ""
-              }`}
-              alt={item.title}
-            />
+            <br />
           </div>
-        ))}
-      </div>
+          <div className="flex gap-10 flex-col mt-10 md:text-left text-center lg:ml-[-200px]">
+            <b className="text-slate-300">{data?.name}</b>
+            <p className="text-slate-500 line-clamp-7">{data?.biography}</p>
+            <div>
+              <div className="text-red-500">
+                <b className="text-xl">Also Known as:</b>
+                {data?.also_known_as?.map((item: any) => (
+                  <h3>{item}</h3>
+                ))}
+              </div>
+            </div>
+            <section>
+              <span className="text-red-500 flex gap-4 md:items-center md:justify-start justify-center">
+                <b>
+                  <FaBirthdayCake />
+                </b>
+                <div className="mt-3">{data.birthday}</div>{" "}
+              </span>
+            </section>
+          </div>
+        </div>
+      </section>
     </div>
   );
 });

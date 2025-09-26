@@ -2,21 +2,22 @@ import { memo, useState, type FC } from "react";
 import { useMovie } from "../../model/useMovie";
 import { createImageUrl } from "@/shared/utils";
 import { Image } from "antd";
+import { Title } from "../../../../shared/ui/title/Title";
+import { Link, Outlet } from "react-router-dom";
 
 interface Props {
   id: string;
-  reviews: any[];
 }
 
 export const MovieInfo: FC<Props> = memo((props) => {
-  const { id, reviews } = props;
+  const { id } = props;
   const { getMovieById, getMovieInfo } = useMovie();
   const [show, setShow] = useState(false);
   const { data } = getMovieById(id);
   const { data: imageData } = getMovieInfo(id, "images");
 
   return (
-    <div className="text-white text-center w-full">
+    <div className="text-white  text-center w-full">
       <section>
         <div
           style={{
@@ -24,12 +25,17 @@ export const MovieInfo: FC<Props> = memo((props) => {
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
-          className="container rounded-2xl h-[700px] mt-10 flex flex-col items-center mb-30"
+          className="container rounded-2xl md:h-[700px] mt-10 flex flex-col h-[500px] items-center mb-30"
         >
           <br />
           <br />
           <br />
-          <h1 className="text-[70px] font-bold">{data?.title}</h1>
+          <div className="bg-black opacity-80 md:p-20 p-6 w-full rounded-2xl md:mt-[26%] mt-[45%]">
+            <div className=" text-red-600 text-2xl font-bold">{data?.title}</div>
+            <button className="w-[150px] text-white bg-red-500 mb-[-30px] hover:text-red-600 hover:border rounded-lg mt-10 hover:bg-white h-[50px]">
+              Watch Now
+            </button>
+          </div>
 
           <br />
           <br />
@@ -88,15 +94,14 @@ export const MovieInfo: FC<Props> = memo((props) => {
           />
         ))}
       </section>
-      <section className="container mt-10 text-left">
-        <h2 className="text-2xl font-bold mb-4">Reviews</h2>
-        {reviews?.length === 0 && <p>No reviews available.</p>}
-        {reviews?.map((review) => (
-          <div key={review.id} className="mb-6 p-4 shadow-lg shadow-slate-800 rounded-xl">
-            <h4 className="font-bold text-[#C61F1F]">{review.author}</h4>
-            <p className="mt-2 text-gray-300">{review.content}</p>
-          </div>
-        ))}
+      <section className="container mt-10">
+        <Title>Tabs</Title>
+        <div className="flex gap-4">
+          <Link to={``}>Review</Link>
+          <Link to={`cast`}>Cast</Link>
+          <Link to={`others`}>Others</Link>
+        </div>
+        <Outlet />
       </section>
     </div>
   );
