@@ -1,4 +1,4 @@
-import { memo, Suspense, useState } from "react";
+import { memo, Suspense } from "react";
 import { useMovie } from "../../../../entities/movie";
 import { useParams } from "react-router-dom";
 
