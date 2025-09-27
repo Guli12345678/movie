@@ -4,6 +4,10 @@ import { createImageUrl } from "@/shared/utils";
 import { Image } from "antd";
 import { Title } from "../../../../shared/ui/title/Title";
 import { Link, Outlet } from "react-router-dom";
+import { toggleLike } from "../../../../features/wishlist/model/bookMarkSlice";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../../../../app/store";
+import { GoBookmark, GoBookmarkFill } from "react-icons/go";
 
 interface Props {
   id: string;
@@ -13,8 +17,12 @@ export const MovieInfo: FC<Props> = memo((props) => {
   const { id } = props;
   const { getMovieById, getMovieInfo } = useMovie();
   const [show, setShow] = useState(false);
+
   const { data } = getMovieById(id);
   const { data: imageData } = getMovieInfo(id, "images");
+  const dispatch = useDispatch();
+  const bookmarks = useSelector((state: RootState) => state.bookmark.value);
+  const exists = bookmarks.some((item) => item.id === data?.id);
 
   return (
     <div className="text-white  text-center w-full">
@@ -31,7 +39,9 @@ export const MovieInfo: FC<Props> = memo((props) => {
           <br />
           <br />
           <div className="bg-black opacity-80 md:p-20 p-6 w-full rounded-2xl md:mt-[26%] mt-[45%]">
-            <div className=" text-red-600 text-2xl font-bold">{data?.title}</div>
+            <div className=" text-red-600 text-2xl font-bold">
+              {data?.title}
+            </div>
             <button className="w-[150px] text-white bg-red-500 mb-[-30px] hover:text-red-600 hover:border rounded-lg mt-10 hover:bg-white h-[50px]">
               Watch Now
             </button>
@@ -50,6 +60,27 @@ export const MovieInfo: FC<Props> = memo((props) => {
           <br />
           <br />
           <br />
+        </div>
+
+        <div className="flex justify-center">
+          <div className="mb-17 flex flex-col  ">
+            <div
+              className="flex items-center"
+              onClick={() => dispatch(toggleLike(data))}
+            >
+              {exists ? (
+                <button className="bg-red-700 flex items-center hover:bg-white rounded-lg hover:text-red-600 p-5 gap-5 font-semibold w-[230px]">
+                  <GoBookmarkFill size={30} className="hover:text-red-600" />
+                  Remove from BookMark
+                </button>
+              ) : (
+                <button className="bg-red-700 flex items-center hover:bg-white rounded-lg hover:text-red-600 p-5 gap-5 font-semibold w-[230px]">
+                  <GoBookmark size={30} className="hover:text-red-600" />
+                  Add to BookMark
+                </button>
+              )}
+            </div>
+          </div>
         </div>
         <section className="container mt-[-50px]">
           <span className="hover:text-[#C61F1F] font-bold">Details: </span>

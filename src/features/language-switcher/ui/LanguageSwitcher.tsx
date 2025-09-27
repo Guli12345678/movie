@@ -7,10 +7,13 @@ export const LanguageSwitcher = memo(() => {
   console.log(i18n.language);
 
   return (
-    <select onChange={(e) => i18n.changeLanguage(e.target.value)}>
-      <option value="uz">uz</option>
-      <option value="en">en</option>
-      <option value="ru">ru</option>
+    <select
+      onChange={(e) => i18n.changeLanguage(e.target.value)}
+      className="px-5 py-4 rounded-md flex justify-center  mr-10 text-white bg-red-700"
+    >
+      <option value="uz">O'zbekcha</option>
+      <option value="en">English</option>
+      <option value="ru">Русский</option>
     </select>
   );
 });

@@ -4,8 +4,10 @@ import logo from "@/shared/assets/logo.svg";
 import { PiFilmSlateBold, PiMonitorLight, PiTicketLight } from "react-icons/pi";
 import { IoIosSearch } from "react-icons/io";
 import { useTranslation } from "react-i18next";
+import { CiLogin } from "react-icons/ci";
+
 import { Option } from "./Option";
-import "@/app/i18n"
+import "@/app/i18n";
 export const Header = memo(() => {
   const { t } = useTranslation();
 
@@ -71,13 +73,13 @@ export const Header = memo(() => {
           </li>
         </ul>
 
+        <Option />
+
         <div>
-          <button className="w-[180px] h-[56px] rounded-[12px] text-white bg-[#C61F1F]">
-            {t("auth.login")}
+          <button className="px-4 py-4 rounded-lg text-white bg-[#C61F1F]">
+            <CiLogin />
           </button>
         </div>
-
-        <Option />
       </div>
     </header>
   );
