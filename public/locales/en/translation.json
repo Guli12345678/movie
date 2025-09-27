@@ -1,0 +1,68 @@
+{
+  "greeting": "Hello world",
+  "header": {
+    "navigation": {
+      "home": "Home",
+      "movies": "Movies",
+      "search": "Search"
+    }
+  },
+  "button": {
+    "submit": "submit",
+    "cancel": "cancel",
+    "loading": "loading",
+    "edit": "edit",
+    "send": "send",
+    "update": "update",
+    "delete": "delete",
+    "save": "save"
+  },
+
+  "nav": {
+    "movies": "Movies",
+    "bookmark": "Bookmark",
+    "tickets": "Tickets",
+    "search": "Search"
+  },
+  "auth": {
+    "login": "Login"
+  },
+
+  "sort": {
+    "placeholder": "Sort by",
+    "popularity": "Most popular",
+    "highest": "Highest rated",
+    "lowest": "Lowest rated"
+  },
+  "year": {
+    "placeholder": "Year",
+    "1850s": "1850s",
+    "1900s": "1900s",
+    "2000s": "2000s",
+    "2010s": "2010s",
+    "2020s": "2020s",
+    "2030s": "2030s"
+  },
+  "genre": {
+    "placeholder": "Genre",
+    "28": "Action",
+    "12": "Adventure",
+    "16": "Animation",
+    "35": "Comedy",
+    "80": "Crime",
+    "99": "Documentary",
+    "18": "Drama",
+    "10751": "Family",
+    "14": "Fantasy",
+    "36": "History",
+    "27": "Horror",
+    "10402": "Music",
+    "9648": "Mystery",
+    "10749": "Romance",
+    "878": "Science Fiction",
+    "10770": "TV Movie",
+    "53": "Thriller",
+    "10752": "War",
+    "37": "Western"
+  }
+}

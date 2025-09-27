@@ -1,0 +1,67 @@
+{
+  "greeting": "Salom dunyo",
+  "header": {
+    "navigation": {
+      "home": "Bosh sahifa",
+      "movies": "Kinolar",
+      "search": "Qidirish"
+    }
+  },
+  "button": {
+    "submit": "yuborish",
+    "cancel": "bekor qilish",
+    "loading": "kutish",
+    "edit": "o'zgartirish",
+    "send": "yuborish",
+    "update": "o'zgartirish",
+    "delete": "o'chirish",
+    "save": "saqlash"
+  },
+  "nav": {
+    "movies": "Filmlar",
+    "bookmark": "Seriallar",
+    "tickets": "Chiptalar",
+    "search": "Qidiruv"
+  },
+  "auth": {
+    "login": "Kirish"
+  },
+
+  "sort": {
+    "placeholder": "Saralash",
+    "popularity": "Eng mashhur",
+    "highest": "Eng yuqori baholangan",
+    "lowest": "Eng past baholangan"
+  },
+  "year": {
+    "placeholder": "Yil",
+    "1850s": "1850-yillar",
+    "1900s": "1900-yillar",
+    "2000s": "2000-yillar",
+    "2010s": "2010-yillar",
+    "2020s": "2020-yillar",
+    "2030s": "2030-yillar"
+  },
+  "genre": {
+    "placeholder": "Janr",
+    "28": "Jangari",
+    "12": "Sarguzasht",
+    "16": "Animatsiya",
+    "35": "Komediya",
+    "80": "Jinoyat",
+    "99": "Hujjatli",
+    "18": "Drama",
+    "10751": "Oila",
+    "14": "Fantastika",
+    "36": "Tarix",
+    "27": "Qo‘rqinchli",
+    "10402": "Musiqa",
+    "9648": "Sirli",
+    "10749": "Romantika",
+    "878": "Ilmiy fantastika",
+    "10770": "TV filmi",
+    "53": "Triller",
+    "10752": "Urush",
+    "37": "Vestern"
+  }
+}

@@ -1,8 +1,12 @@
 import { Select } from "antd";
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router-dom";
 
+import "@/app/i18n";
+
 export const MovieSort = memo(() => {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const onChange = (value: string) => {
@@ -23,12 +27,12 @@ export const MovieSort = memo(() => {
       <div>
         <Select
           className="w-60"
-          placeholder="Sort_by"
+          placeholder={t("sort.placeholder")}
           value={searchParams.get("sort") ?? undefined}
           options={[
-            { value: "popularity.desc", label: "Most popular" },
-            { value: "vote_average.desc", label: "Highest rated" },
-            { value: "vote_average.asc", label: "Lowest rated" },
+            { value: "popularity.desc", label: t("sort.popularity") },
+            { value: "vote_average.desc", label: t("sort.highest") },
+            { value: "vote_average.asc", label: t("sort.lowest") },
           ]}
           onChange={onChange}
         />
@@ -36,15 +40,15 @@ export const MovieSort = memo(() => {
       <div>
         <Select
           className="w-60"
-          placeholder="Year"
+          placeholder={t("year.placeholder")}
           value={searchParams.get("release_date.lte") ?? undefined}
           options={[
-            { value: "1878-01-01", label: "1850s" },
-            { value: "1900-01-01", label: "1900s" },
-            { value: "2000-01-01", label: "2000s" },
-            { value: "2010-01-01", label: "2010s" },
-            { value: "2020-01-01", label: "2020s" },
-            { value: "2030-01-01", label: "2030s" },
+            { value: "1878-01-01", label: t("year.1850s") },
+            { value: "1900-01-01", label: t("year.1900s") },
+            { value: "2000-01-01", label: t("year.2000s") },
+            { value: "2010-01-01", label: t("year.2010s") },
+            { value: "2020-01-01", label: t("year.2020s") },
+            { value: "2030-01-01", label: t("year.2030s") },
           ]}
           onChange={onChange1}
         />
@@ -53,28 +57,28 @@ export const MovieSort = memo(() => {
       <div>
         <Select
           className="w-60"
-          placeholder="Genre"
+          placeholder={t("genre.placeholder")}
           value={searchParams.get("with_genres") ?? undefined}
           options={[
-            { value: "28", label: "Action" },
-            { value: "12", label: "Adventure" },
-            { value: "16", label: "Animation" },
-            { value: "35", label: "Comedy" },
-            { value: "80", label: "Crime" },
-            { value: "99", label: "Documentary" },
-            { value: "18", label: "Drama" },
-            { value: "10751", label: "Family" },
-            { value: "14", label: "Fantasy" },
-            { value: "36", label: "History" },
-            { value: "27", label: "Horror" },
-            { value: "10402", label: "Music" },
-            { value: "9648", label: "Mystery" },
-            { value: "10749", label: "Romance" },
-            { value: "878", label: "Science Fiction" },
-            { value: "10770", label: "TV Movie" },
-            { value: "53", label: "Thriller" },
-            { value: "10752", label: "War" },
-            { value: "37", label: "Western" },
+            { value: "28", label: t("genre.28") },
+            { value: "12", label: t("genre.12") },
+            { value: "16", label: t("genre.16") },
+            { value: "35", label: t("genre.35") },
+            { value: "80", label: t("genre.80") },
+            { value: "99", label: t("genre.99") },
+            { value: "18", label: t("genre.18") },
+            { value: "10751", label: t("genre.10751") },
+            { value: "14", label: t("genre.14") },
+            { value: "36", label: t("genre.36") },
+            { value: "27", label: t("genre.27") },
+            { value: "10402", label: t("genre.10402") },
+            { value: "9648", label: t("genre.9648") },
+            { value: "10749", label: t("genre.10749") },
+            { value: "878", label: t("genre.878") },
+            { value: "10770", label: t("genre.10770") },
+            { value: "53", label: t("genre.53") },
+            { value: "10752", label: t("genre.10752") },
+            { value: "37", label: t("genre.37") },
           ]}
           onChange={onChange2}
         />
