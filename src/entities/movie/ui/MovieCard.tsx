@@ -36,7 +36,7 @@ export const MovieCard: FC<Props> = memo((props) => {
           />
           {release_year && (
             <span className="bg-red-500 text-white text-sm absolute top-0 mt-3 ml-5 px-2 rounded">
-              {release_year < current_year ? (
+              {release_year <= current_year ? (
                 release_year
               ) : (
                 <>
