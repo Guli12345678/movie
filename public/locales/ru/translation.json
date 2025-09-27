@@ -1,19 +1,7 @@
 {
-
-  "button": {
-    "submit": "submit",
-    "cancel": "cancel",
-    "loading": "loading",
-    "edit": "edit",
-    "send": "send",
-    "update": "update",
-    "delete": "delete",
-    "save": "save"
-  },
   "nav": {
     "movies": "Фильмы",
     "bookmark": "Закладки",
-    "tickets": "Билеты",
     "search": "Поиск"
   },
   "auth": {
@@ -56,5 +44,6 @@
     "53": "Триллер",
     "10752": "Война",
     "37": "Вестерн"
-  }
+  },
+  "empty_bookmark": "У вас нет отмеченных фильмов."
 }

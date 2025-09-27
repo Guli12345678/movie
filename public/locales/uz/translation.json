@@ -1,26 +1,7 @@
 {
-  "greeting": "Salom dunyo",
-  "header": {
-    "navigation": {
-      "home": "Bosh sahifa",
-      "movies": "Kinolar",
-      "search": "Qidirish"
-    }
-  },
-  "button": {
-    "submit": "yuborish",
-    "cancel": "bekor qilish",
-    "loading": "kutish",
-    "edit": "o'zgartirish",
-    "send": "yuborish",
-    "update": "o'zgartirish",
-    "delete": "o'chirish",
-    "save": "saqlash"
-  },
   "nav": {
     "movies": "Filmlar",
-    "bookmark": "Seriallar",
-    "tickets": "Chiptalar",
+    "bookmark": "Saqlangan",
     "search": "Qidiruv"
   },
   "auth": {
@@ -63,5 +44,6 @@
     "53": "Triller",
     "10752": "Urush",
     "37": "Vestern"
-  }
+  },
+  "empty_bookmark": "Sizda hali saqlangan filmlar yo'q"
 }

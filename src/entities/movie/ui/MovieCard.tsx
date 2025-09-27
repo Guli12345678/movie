@@ -23,10 +23,10 @@ export const MovieCard: FC<Props> = memo((props) => {
   return (
     <div>
       <div>
-        <div className="relative ">
+        <div className="relative group overflow-hidden">
           <img
             onClick={() => navigate(`/movie/${movie.id}`)}
-            className="md:h-[435px] h-[235px] w-full rounded-lg object-cover"
+            className="md:h-[435px] h-[235px] w-full rounded-lg object-cover "
             src={
               movie.poster_path
                 ? createImageUrl(movie.poster_path)
@@ -48,12 +48,15 @@ export const MovieCard: FC<Props> = memo((props) => {
             </span>
           )}
 
-          <div className="absolute top-0 ml-60 mt-4">
+          <div className="absolute top-0 ml-95 group-hover:ml-55 flex justify-center items-center mt-4 rounded-full p-2 bg-white transition hover:duration-1000">
             <button onClick={() => dispatch(toggleLike(movie))}>
               {exists ? (
-                <GoBookmarkFill size={30} className="text-red-500" />
+                <GoBookmarkFill
+                  size={25}
+                  className="text-red-500 cursor-pointer"
+                />
               ) : (
-                <GoBookmark size={30} className="" />
+                <GoBookmark size={25} className="text-red-600 cursor-pointer" />
               )}
             </button>
           </div>
