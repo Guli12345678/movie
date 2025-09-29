@@ -7,7 +7,7 @@ export const LanguageSwitcher = memo(() => {
   return (
     <select
       onChange={(e) => i18n.changeLanguage(e.target.value)}
-      className="px-5 py-4 rounded-md flex justify-center  border border-red-700"
+      className="md:px-5 px-0 md:py-4 py-2 rounded-md flex justify-center  border border-red-700"
     >
       <option className="bg-black text-red-500" value="uz">
         O'zbekcha

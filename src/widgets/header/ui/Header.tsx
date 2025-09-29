@@ -58,7 +58,7 @@ export const Header = memo(() => {
             ) : (
               <div>
                 <NavLink to={"/login"}>
-                  <button className="px-4 py-5 rounded-lg text-white border border-[#C61F1F]">
+                  <button className="md:px-4 px-2 md:py-5 py-3 rounded-lg text-white border border-[#C61F1F]">
                     <CiLogin />
                   </button>
                 </NavLink>
