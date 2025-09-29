@@ -27,6 +27,7 @@ export const MovieSort = memo(() => {
       <div>
         <Select
           className="w-60"
+          allowClear
           placeholder={t("sort.placeholder")}
           value={searchParams.get("sort") ?? undefined}
           options={[
@@ -41,6 +42,7 @@ export const MovieSort = memo(() => {
         <Select
           className="w-60"
           placeholder={t("year.placeholder")}
+          allowClear
           value={searchParams.get("release_date.lte") ?? undefined}
           options={[
             { value: "1878-01-01", label: t("year.1850s") },
@@ -59,6 +61,7 @@ export const MovieSort = memo(() => {
           className="w-60"
           placeholder={t("genre.placeholder")}
           value={searchParams.get("with_genres") ?? undefined}
+          allowClear
           options={[
             { value: "28", label: t("genre.28") },
             { value: "12", label: t("genre.12") },
